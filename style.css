@@ -9,14 +9,11 @@
   user-select: none;
 }
 
-body {
-  background-color: #ccc;
-  color: #fff;
-}
-
-/* --- Variables --- */
+/* --- Custom Properties --- */
 :root {
   --modal-height: 80vh;
+  --dark: #101c36;
+  --light: #fff;
 }
 
 /* Grid Container */
@@ -28,8 +25,9 @@ body {
 /* Card */
 .card {
   display: grid;
-  background: #ccc;
+  place-content: center;
   cursor: pointer;
+  background: var(--light);
 }
 
 /* overlap img & content */
@@ -39,11 +37,18 @@ body {
   grid-column: 1 / 2;
 }
 
+.card h3{
+  color: var(--dark);
+  transform: translateY(40%);
+  opacity: 0;
+  transition: all 500ms ease-in;
+}
+
 .card img {
   width: 100%;
   object-fit: cover;
   aspect-ratio: 1 / 1;
-
+  z-index: 2;
   transition: all 400ms ease-in;
 }
 
@@ -59,19 +64,33 @@ body {
   z-index: 1;
 }
 
-/* Sub Gallery for each Image */
+/* --- Card Hover Effects --- */
+.card:hover h3{
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.card:hover img {
+  opacity: 0;
+}
+
+.card-content {
+  margin: auto;
+}
+
+/* --- Sub Gallery for each Image --- */
 .sub-gallery {
   display: none;
 }
 
-/* outer modal */
+/* --- Modal Container --- */
 #modal {
   display: none;
   position: fixed;
   z-index: 5;
   top: 0;
   left: 0;
-  color: #fff;
+  color: var(--light);
   font-family: Arial, Helvetica, sans-serif;
   user-select: none;
 
@@ -117,7 +136,7 @@ body {
 }
 
 #close-btn {
-  color: #fff;
+  color: var(--light);
   font-size: 1.8rem;
   font-weight: bold;
   cursor: pointer;
@@ -236,7 +255,7 @@ body {
 .sub-modalCard {
   /*   display: grid; */
   margin: 0.5rem 0.3rem;
-  border: #fff 2px solid;
+  border: var(--light) 2px solid;
 }
 
 .sub-modalCard img {
