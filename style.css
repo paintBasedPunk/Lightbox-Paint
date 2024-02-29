@@ -27,7 +27,8 @@
   display: grid;
   place-content: center;
   cursor: pointer;
-  background: var(--light);
+  /* background-color: var(--light); */
+  background-color: var(--dark);
 }
 
 /* overlap img & content */
@@ -38,7 +39,8 @@
 }
 
 .card h3{
-  color: var(--dark);
+  /* color: var(--dark); */
+  color: var(--light);
   transform: translateY(40%);
   opacity: 0;
   transition: all 500ms ease-in;
